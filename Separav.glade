@@ -3,7 +3,7 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="janela">
-    <property name="title" translatable="yes">Extrai o &#xC1;udio do Video</property>
+    <property name="title" translatable="yes">Separa o &#xC1;udio do Video</property>
     <property name="window_position">center</property>
     <property name="default_width">440</property>
     <property name="default_height">250</property>
@@ -187,6 +187,6 @@
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
-    <property name="pixbuf">Cut-64.png</property>
+    <property name="pixbuf">cut.png</property>
   </object>
 </interface>
