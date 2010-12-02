@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import sys, os, thread, time
+import sys, os, thread
 
+##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
-
 import gtk
 import gtk.glade
+    
+### Importa a Biblioteca GObject ###
 
 import gobject
 gobject.threads_init()
 
-import pygst 
-pygst.require('0.10')
+### Importa a Biblioteca Gstreamer ###
 
+import pygst
+pygst.require('0.10')
 import gst
 
 
@@ -74,6 +77,7 @@ class Convertevf(object):
 	# Decoder callback, used to link video pad to sink
 	def decoder_callback(self, decoder, pad, data):
 		structure_name = pad.get_caps()[0].get_name()
+		print structure_name
 		if structure_name.startswith("video"):
 			video_pad = self.player.get_by_name("video-sink").get_pad("sink")
 			pad.link(video_pad)

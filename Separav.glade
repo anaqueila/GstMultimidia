@@ -3,11 +3,11 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="janela">
-    <property name="title" translatable="yes">Separa Video</property>
+    <property name="title" translatable="yes">Extrai o &#xC1;udio do Video</property>
     <property name="window_position">center</property>
     <property name="default_width">440</property>
     <property name="default_height">250</property>
-    <property name="icon_name">applications-multimedia</property>
+    <property name="icon">cut.png</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -17,7 +17,8 @@
             <property name="xalign">0.10000000149011612</property>
             <property name="label" translatable="yes">Fonte</property>
             <attributes>
-              <attribute name="weight" value="ultrabold"/>
+              <attribute name="weight" value="book"/>
+              <attribute name="size" value="13000"/>
             </attributes>
           </object>
           <packing>
@@ -34,6 +35,10 @@
                 <property name="visible">True</property>
                 <property name="xalign">0.10000000149011612</property>
                 <property name="label" translatable="yes">Caminho da pasta:</property>
+                <attributes>
+                  <attribute name="weight" value="light"/>
+                  <attribute name="size" value="12000"/>
+                </attributes>
               </object>
               <packing>
                 <property name="position">0</property>
@@ -58,6 +63,7 @@
             <property name="visible">True</property>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="position">2</property>
           </packing>
         </child>
@@ -67,7 +73,8 @@
             <property name="xalign">0.10000000149011612</property>
             <property name="label" translatable="yes">Destino</property>
             <attributes>
-              <attribute name="weight" value="ultrabold"/>
+              <attribute name="weight" value="book"/>
+              <attribute name="size" value="13000"/>
             </attributes>
           </object>
           <packing>
@@ -84,6 +91,10 @@
                 <property name="visible">True</property>
                 <property name="xalign">0.10000000149011612</property>
                 <property name="label" translatable="yes">Caminho da pasta:</property>
+                <attributes>
+                  <attribute name="weight" value="light"/>
+                  <attribute name="size" value="12000"/>
+                </attributes>
               </object>
               <packing>
                 <property name="position">0</property>

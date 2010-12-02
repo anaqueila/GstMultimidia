@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import sys, os, thread, time
+import sys, os, thread
 
+##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
 import gtk
 import gtk.glade
+    
+### Importa a Biblioteca GObject ###
+
 import gobject
 gobject.threads_init()
 
-import pygst 
-pygst.require('0.10')
+### Importa a Biblioteca Gstreamer ###
 
+import pygst
+pygst.require('0.10')
 import gst
 
 	
@@ -92,6 +97,3 @@ class Caudio(object):
 			err, debug = message.parse_error()
 			print "Error: %s" % err, debug
 
-if __name__ == "__main__":
-	
-	c = Caudio()

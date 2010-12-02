@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import sys, os, thread, time
+import sys, os, thread
 
+##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
-
 import gtk
 import gtk.glade
-import gobject
-gobject.threads_init()
+    
+### Importa a Biblioteca GObject ###
 
+#import gobject
+#gobject.threads_init()
 
-import pygst 
+### Importa a Biblioteca Gstreamer ###
+
+import pygst
 pygst.require('0.10')
-
 import gst
 
 class Webcam():
@@ -27,11 +30,16 @@ class Webcam():
 	def on_stop_clicked(self, widget, data=None):
 		if self.player.get_state()[1] == gst.STATE_PLAYING:
 			self.player.set_state(gst.STATE_NULL)
+			print "End"
 		else:
 			print "nao ha nada tocando"
 
 	def on_finish_clicked(self, widget, data=None):
 		self.janela.hide_all()
+		
+	def on_janela_destroy(self, widget, data=None):
+		self.player.set_state(gst.STATE_NULL)
+		gtk.main_quit()
 		
 
 	arquivoglade = "webcam.glade"
@@ -74,6 +82,7 @@ class Webcam():
 
 	def on_message(self, bus, message):
 		t = message.type
+		print t
 		if t == gst.MESSAGE_EOS:
 			self.player.set_state(gst.STATE_NULL)
 
@@ -94,3 +103,6 @@ class Webcam():
 			gtk.gdk.threads_enter()
 			imagesink.set_xwindow_id(self.movie_window.window.xid)
 			gtk.gdk.threads_leave()
+			
+if __name__ == "__main__":
+	w = Webcam()

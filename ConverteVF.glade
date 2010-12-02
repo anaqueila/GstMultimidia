@@ -3,9 +3,11 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="janela">
+    <property name="title" translatable="yes">Converte Video em Foto</property>
     <property name="window_position">center</property>
     <property name="default_width">440</property>
     <property name="default_height">250</property>
+    <property name="icon">Photos&amp;Videos.png</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -14,6 +16,10 @@
             <property name="visible">True</property>
             <property name="xalign">0.05000000074505806</property>
             <property name="label" translatable="yes">Fonte:</property>
+            <attributes>
+              <attribute name="weight" value="book"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
           </object>
           <packing>
             <property name="position">0</property>
@@ -71,6 +77,10 @@
             <property name="visible">True</property>
             <property name="xalign">0.05000000074505806</property>
             <property name="label" translatable="yes">Destino:</property>
+            <attributes>
+              <attribute name="weight" value="book"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
           </object>
           <packing>
             <property name="position">3</property>
@@ -84,6 +94,16 @@
           </object>
           <packing>
             <property name="position">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar" id="statusbar1">
+            <property name="visible">True</property>
+            <property name="spacing">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">5</property>
           </packing>
         </child>
       </object>

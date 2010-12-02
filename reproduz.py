@@ -3,19 +3,22 @@
 
 import sys, os, thread
 
+##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
-
 import gtk
 import gtk.glade
-import gobject
-gobject.threads_init()
+    
+### Importa a Biblioteca GObject ###
+
+#import gobject
+#gobject.threads_init()
+
+### Importa a Biblioteca Gstreamer ###
 
 import pygst
 pygst.require('0.10')
-
 import gst
-
 
 
 class Reproduz(object):
@@ -44,6 +47,10 @@ class Reproduz(object):
 		filter.add_pattern("*.mp4")
 		filter.add_pattern("*.wma")
 		filter.add_pattern("*.mp3")
+		filter.add_pattern("*.flac")
+		filter.add_pattern("*.wav")
+		filter.add_pattern("*.aac")
+		filter.add_pattern("*.aiff")
 		chooser.add_filter(filter)
 
 		response = chooser.run()
@@ -78,7 +85,7 @@ class Reproduz(object):
 
 	def on_volume_value_changed(self, widget, vol):
 		self.player.set_property("volume", float(vol))
-
+		
 
 	def on_hscale1_change_value(adjustment=None):
 		print adjustment
@@ -88,8 +95,9 @@ class Reproduz(object):
 		self.janela.hide()
 		gtk.main_quit()
 
-	#def on_janela_destroy(self, widget, data=None):
-	#	gtk.main_quit()
+	def on_janela_destroy(self, widget, data=None):
+		self.player.set_state(gst.STATE_NULL)
+		gtk.main_quit()
 
 	arquivoglade = "Reproduz.glade"
 
@@ -113,13 +121,10 @@ class Reproduz(object):
 		self.movie_window.modify_bg(gtk.STATE_NORMAL, gtk.gdk.Color(red=0, green=0, blue=0, pixel=65535))
 
 
-		#self.player = gst.pipeline("player")
 		self.player = gst.element_factory_make("playbin", "src")
-		#source = gst.element_factory_make("filesrc","file-source")
 		sink = gst.element_factory_make("xvimagesink", "video-output")
 		self.player.set_property("video-sink", sink)
 		self.player.props.vis_plugin = gst.element_factory_make ("goom2k1")
-		self.timeFormat = gst.Format(gst.FORMAT_TIME)
 
 		bus = self.player.get_bus()
 
@@ -167,6 +172,3 @@ class Reproduz(object):
 			imagesink.set_xwindow_id(self.movie_window.window.xid)
 			gtk.gdk.threads_leave()
 
-if __name__ == "__main__":
-
-	r = Reproduz()

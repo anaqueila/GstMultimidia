@@ -2,18 +2,13 @@
 #!/usr/bin/env python
 
 import sys, os
-import os.path
-import pygtk, gtk
-import gobject
-gobject.threads_init()
 
+##### Importa a Biblioteca GTK+ #####
+import pygtk
+pygtk.require("2.0")
+import gtk
 import gtk.glade
-
-
-import pygst
-pygst.require("0.10")
-import gst
-
+    
 
 from webcam import *
 from webcamg import *

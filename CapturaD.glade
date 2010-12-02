@@ -3,28 +3,28 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="janela">
-    <property name="width_request">400</property>
-    <property name="height_request">200</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Grava o Desktop</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
-    <property name="icon">Desktop-64.png</property>
-    <property name="icon_name">applications-multimedia</property>
+    <property name="default_width">440</property>
+    <property name="default_height">250</property>
+    <property name="icon">Desktop.png</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <child>
-          <placeholder/>
-        </child>
         <child>
           <object class="GtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="xalign">0.05000000074505806</property>
             <property name="label" translatable="yes">Fonte</property>
+            <attributes>
+              <attribute name="weight" value="book"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
@@ -40,9 +40,8 @@
                 <property name="label" translatable="yes">Digite o Nome : </property>
                 <property name="justify">center</property>
                 <attributes>
-                  <attribute name="style" value="normal"/>
-                  <attribute name="weight" value="book"/>
-                  <attribute name="size" value="10500"/>
+                  <attribute name="weight" value="light"/>
+                  <attribute name="size" value="12000"/>
                   <attribute name="foreground" value="#828287877979"/>
                 </attributes>
               </object>
@@ -63,7 +62,7 @@
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -76,9 +75,8 @@
                 <property name="xalign">0.10000000149011612</property>
                 <property name="label" translatable="yes">Nome pasta: </property>
                 <attributes>
-                  <attribute name="style" value="normal"/>
-                  <attribute name="weight" value="book"/>
-                  <attribute name="size" value="10500"/>
+                  <attribute name="weight" value="light"/>
+                  <attribute name="size" value="12000"/>
                   <attribute name="foreground" value="#828287877979"/>
                 </attributes>
               </object>
@@ -89,8 +87,8 @@
             <child>
               <object class="GtkFileChooserButton" id="fcb">
                 <property name="visible">True</property>
-                <property name="do_overwrite_confirmation">True</property>
                 <property name="action">select-folder</property>
+                <property name="do_overwrite_confirmation">True</property>
                 <property name="title" translatable="yes">Selecione uma Pasta</property>
               </object>
               <packing>
@@ -101,7 +99,7 @@
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="position">3</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -158,7 +156,7 @@
           </object>
           <packing>
             <property name="padding">2</property>
-            <property name="position">4</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -171,7 +169,7 @@
             <property name="fill">False</property>
             <property name="padding">5</property>
             <property name="pack_type">end</property>
-            <property name="position">5</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>

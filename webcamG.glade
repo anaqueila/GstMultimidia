@@ -9,6 +9,7 @@
     <property name="window_position">center</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
+    <property name="icon">Webcam_64.png</property>
     <signal name="destroy" handler="on_janela_destroy"/>
     <child>
       <object class="GtkVBox" id="vbox1">

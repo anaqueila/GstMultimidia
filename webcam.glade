@@ -9,6 +9,8 @@
     <property name="window_position">center</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
+    <property name="icon">Webcam.png</property>
+    <signal name="destroy" handler="on_janela_destroy"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -23,7 +25,7 @@
         <child>
           <object class="GtkHButtonBox" id="hbuttonbox1">
             <property name="visible">True</property>
-            <property name="spacing">6</property>
+            <property name="spacing">5</property>
             <property name="layout_style">center</property>
             <child>
               <object class="GtkButton" id="play">
@@ -74,6 +76,7 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="padding">5</property>
             <property name="position">1</property>
           </packing>
         </child>

@@ -2,24 +2,23 @@
 #!/usr/bin/env python
 
 import sys, os, thread, time
-try:
-    import pygtk
-    pygtk.require("2.0")
-except:
-    pass
-try:
-    import gtk
-    import gtk.glade
-    import gobject
-    gobject.threads_init()
-except:
-    sys.exit(1)
 
-import pygst 
+##### Importa a Biblioteca GTK+ #####
+import pygtk
+pygtk.require("2.0")
+import gtk
+import gtk.glade
+    
+### Importa a Biblioteca GObject ###
+
+#import gobject
+#gobject.threads_init()
+
+### Importa a Biblioteca Gstreamer ###
+
+import pygst
 pygst.require('0.10')
-
 import gst
-
 
 class Separav(object):
 
@@ -41,7 +40,7 @@ class Separav(object):
 			self.player.set_state(gst.STATE_NULL)
 		
 	def on_sair_clicked(self, widget, Data=None):
-		gtk.main_quit()
+		self.janela.hide_all()
 		
 
 	arquivoglade = "Separav.glade"
@@ -80,9 +79,6 @@ class Separav(object):
 		gtk.main()
 		
 	def demuxer_callback(self, demuxer, pad):
-        #if pad.get_property("template").name_template == "video_%02d":
-            #queuev_pad = self.queuev.get_pad("sink")
-            #pad.link(queuev_pad)
 		structure_name = pad.get_caps()[0].get_name()
 		if structure_name.startswith("audio"):
 			queuea_pad = self.queue.get_pad("sink")
@@ -99,6 +95,3 @@ class Separav(object):
 			print "Error: %s" % err, debug
 			self.player.set_state(gst.STATE_NULL)
 
-#if __name__ == "__main__":
-	
-#	sv = Separav()

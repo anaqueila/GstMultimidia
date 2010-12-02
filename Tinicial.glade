@@ -11,7 +11,7 @@
     <property name="window_position">center</property>
     <property name="default_width">640</property>
     <property name="default_height">800</property>
-    <property name="icon_name">applications-multimedia</property>
+    <property name="icon">Player.png</property>
     <signal name="destroy" handler="on_janela_destroy"/>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -27,11 +27,11 @@
 </property>
                 <property name="justify">center</property>
                 <attributes>
-                  <attribute name="weight" value="ultraheavy"/>
+                  <attribute name="weight" value="book"/>
                   <attribute name="underline" value="True"/>
-                  <attribute name="absolute-size" value="19000"/>
+                  <attribute name="size" value="20000"/>
                   <attribute name="foreground" value="#b80cb34eb34e"/>
-                  <attribute name="underline-color" value="#be3ef8e3071c"/>
+                  <attribute name="underline-color" value="#071cf8e3d345"/>
                 </attributes>
               </object>
               <packing>
@@ -41,7 +41,7 @@
             <child>
               <object class="GtkImage" id="image9">
                 <property name="visible">True</property>
-                <property name="pixbuf">Listen to music-64.png</property>
+                <property name="pixbuf">Listen.png</property>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -50,6 +50,16 @@
           </object>
           <packing>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator1">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="padding">10</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -333,7 +343,7 @@
             </child>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -359,7 +369,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
@@ -371,34 +381,34 @@
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
-    <property name="pixbuf">Media-64.png</property>
+    <property name="pixbuf">Media.png</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
-    <property name="pixbuf">Webcam_64.png</property>
+    <property name="pixbuf">Webcam.png</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
-    <property name="pixbuf">video-64(2).png</property>
+    <property name="pixbuf">music-64.png</property>
   </object>
   <object class="GtkImage" id="image4">
     <property name="visible">True</property>
-    <property name="pixbuf">Cut-64.png</property>
+    <property name="pixbuf">cut.png</property>
   </object>
   <object class="GtkImage" id="image5">
     <property name="visible">True</property>
-    <property name="pixbuf">Desktop-64.png</property>
+    <property name="pixbuf">Desktop.png</property>
   </object>
   <object class="GtkImage" id="image6">
     <property name="visible">True</property>
-    <property name="pixbuf">MicrophoneNormalRed.png</property>
+    <property name="pixbuf">Mic.png</property>
   </object>
   <object class="GtkImage" id="image7">
     <property name="visible">True</property>
-    <property name="pixbuf">video-64.png</property>
+    <property name="pixbuf">video_frame.png</property>
   </object>
   <object class="GtkImage" id="image8">
     <property name="visible">True</property>
-    <property name="pixbuf">Photos&amp;Videos_64.png</property>
+    <property name="pixbuf">Photos&amp;Videos.png</property>
   </object>
 </interface>

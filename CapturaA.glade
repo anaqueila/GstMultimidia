@@ -7,7 +7,9 @@
     <property name="title" translatable="yes">Captura Microfone</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
-    <property name="icon_name">applications-multimedia</property>
+    <property name="default_width">440</property>
+    <property name="default_height">250</property>
+    <property name="icon">Mic.png</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -18,9 +20,8 @@
             <property name="xalign">0.019999999552965164</property>
             <property name="label" translatable="yes">Fonte</property>
             <attributes>
-              <attribute name="style" value="normal"/>
-              <attribute name="weight" value="ultrabold"/>
-              <attribute name="size" value="10500"/>
+              <attribute name="weight" value="book"/>
+              <attribute name="size" value="13000"/>
             </attributes>
           </object>
           <packing>
@@ -38,9 +39,8 @@
                 <property name="xalign">0.10000000149011612</property>
                 <property name="label" translatable="yes">Nome do arquivo:</property>
                 <attributes>
-                  <attribute name="style" value="normal"/>
-                  <attribute name="weight" value="book"/>
-                  <attribute name="size" value="10500"/>
+                  <attribute name="weight" value="light"/>
+                  <attribute name="size" value="12000"/>
                   <attribute name="foreground" value="#828287877979"/>
                 </attributes>
               </object>
@@ -77,9 +77,8 @@
                 <property name="xalign">0.10000000149011612</property>
                 <property name="label" translatable="yes">Nome pasta: </property>
                 <attributes>
-                  <attribute name="style" value="normal"/>
-                  <attribute name="weight" value="book"/>
-                  <attribute name="size" value="10500"/>
+                  <attribute name="weight" value="light"/>
+                  <attribute name="size" value="12000"/>
                   <attribute name="foreground" value="#828287877979"/>
                 </attributes>
               </object>
@@ -155,6 +154,7 @@
           </object>
           <packing>
             <property name="fill">False</property>
+            <property name="padding">5</property>
             <property name="position">3</property>
           </packing>
         </child>

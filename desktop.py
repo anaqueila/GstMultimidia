@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import sys, os, thread, time
-try:
-    import pygtk
-    pygtk.require("2.0")
-except:
-    pass
-try:
-    import gtk
-    import gtk.glade
-    import gobject
-    gobject.threads_init()
-except:
-    sys.exit(1)
+import sys, os, thread
 
-import pygst 
+##### Importa a Biblioteca GTK+ #####
+import pygtk
+pygtk.require("2.0")
+import gtk
+import gtk.glade
+    
+### Importa a Biblioteca GObject ###
+
+import gobject
+gobject.threads_init()
+
+### Importa a Biblioteca Gstreamer ###
+
+import pygst
 pygst.require('0.10')
-
 import gst
 
 
@@ -113,7 +113,3 @@ class Desktop(object):
 			imagesink.set_xwindow_id(self.movie_window.window.xid)
 			gtk.gdk.threads_leave()
 
-if __name__ == "__main__":
-	
-	d = Desktop()
-		

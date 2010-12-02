@@ -3,18 +3,21 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="janela">
-    <property name="width_request">400</property>
-    <property name="height_request">200</property>
     <property name="title" translatable="yes">Tela Escolha</property>
     <property name="window_position">center</property>
-    <property name="icon_name">applications-multimedia</property>
+    <property name="default_width">440</property>
+    <property name="default_height">250</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
         <child>
           <object class="GtkLabel" id="label1">
             <property name="visible">True</property>
-            <property name="label" translatable="yes">Escolha: </property>
+            <property name="label" translatable="yes">Escolha sua Op&#xE7;&#xE3;o: </property>
+            <attributes>
+              <attribute name="weight" value="light"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
           </object>
           <packing>
             <property name="position">0</property>
