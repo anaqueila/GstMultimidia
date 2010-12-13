@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
+#Author: Ana Queila, Jeferson e Uesle
 
-import sys, os, thread
+import sys, os
 
 ##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
 import gtk
 import gtk.glade
-    
-### Importa a Biblioteca GObject ###
-
-import gobject
-gobject.threads_init()
 
 ### Importa a Biblioteca Gstreamer ###
 
@@ -28,9 +24,6 @@ class Convertevf(object):
 			filepath = self.fcb.get_filename()
 			filepath2 = self.fcb2.get_filename()
 			name = filepath.split("/")[-1]
-			print filepath
-			print filepath2
-			print name
 			if os.path.isfile(filepath):
 				self.source.set_property("location", filepath)
 				self.sink.set_property("location", filepath2 + "/" + "output-%05d.png")
@@ -38,6 +31,9 @@ class Convertevf(object):
 	
 	def on_sair_clicked(self, widget, Data=None):
 		self.janela.hide_all()
+		self.player.set_state(gst.STATE_NULL)
+		
+		
 		
 	arquivoglade = "ConverteVF.glade"
 	

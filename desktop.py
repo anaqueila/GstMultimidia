@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
+#Author: Ana Queila, Jeferson e Uesle
 
-import sys, os, thread
+import sys, os
 
 ##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
 import gtk
 import gtk.glade
-    
-### Importa a Biblioteca GObject ###
-
-import gobject
-gobject.threads_init()
 
 ### Importa a Biblioteca Gstreamer ###
 
@@ -32,6 +28,7 @@ class Desktop(object):
 		
 	def on_quit_clicked(self,event):
 		self.janela.hide()
+		gtk.main_quit()
 		
 	def on_record_clicked(self,widget, data=None):
 		if self.player.get_state()[1] == gst.STATE_NULL:

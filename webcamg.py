@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
+#Author: Ana Queila, Jeferson e Uesle
 
-import sys, os, thread
+import sys, os
+
 
 ##### Importa a Biblioteca GTK+ #####
 import pygtk
@@ -9,11 +11,6 @@ pygtk.require("2.0")
 import gtk
 import gtk.glade
     
-### Importa a Biblioteca GObject ###
-
-import gobject
-gobject.threads_init()
-
 ### Importa a Biblioteca Gstreamer ###
 
 import pygst
@@ -24,12 +21,10 @@ class Grava():
 
 	def on_record_clicked(self, event):
 		if self.pipe.get_state()[1] == gst.STATE_NULL:
-			filepath = self.fcb.get_filename()+'/'
+			filepath = self.fcb.get_filename()
 			name = self.entry.get_text()+".avi"
-			print filepath
-			print name
 			if os.path.isdir(filepath):
-				self.sink.set_property("location", filepath + name)
+				self.sink.set_property("location", filepath +"/"+ name)
 				self.pipe.set_state(gst.STATE_PLAYING)
 			
 	def on_stop_clicked(self, event):
@@ -39,10 +34,6 @@ class Grava():
 	def on_finish_clicked(self, widget, data=None):
 		self.janela.hide_all()
 
-	def on_janela_destroy(self, widget, data=None):
-		self.pipe.set_state(gst.STATE_NULL)
-		gtk.main_quit()
-		
 	arquivoglade = "webcamG.glade"
 	
 	def __init__ (self):
@@ -65,39 +56,39 @@ class Grava():
 		#Exibe toda interface
 		self.janela.show_all()
 
-		self.pipe = gst.Pipeline("MyWebCam")
+		self.pipe = gst.Pipeline("MyPlayer")
 		videosrc = gst.element_factory_make("v4l2src", "v4l")
 		videorate = gst.element_factory_make("videorate","videorate")
 		caps = gst.Caps("video/x-raw-yuv, framerate=(fraction)30/1 ")
 		capsfilter = gst.element_factory_make("capsfilter", "filter")
 		capsfilter.set_property("caps", caps)
-		tee = gst.element_factory_make("tee","tee0")
-		videorate2 = gst.element_factory_make("videorate","videorate")
-		caps2 = gst.Caps("video/x-raw-yuv, framerate=(fraction)30/1 ")
-		capsfilter2 = gst.element_factory_make("capsfilter", "filter2")
-		capsfilter2.set_property("caps", caps2)
+		tvid = gst.element_factory_make("tee","tvid")
 		colorspace = gst.element_factory_make("ffmpegcolorspace", "colorspace")
 		enc = gst.element_factory_make("jpegenc", "enc")
 		vidqueue = gst.element_factory_make("queue","vidqueue")
 		audqueue = gst.element_factory_make("queue","audqueue")
 		queue = gst.element_factory_make("queue","queue")
 		audiosrc = gst.element_factory_make("alsasrc","audiosrc")
-		#colocar videorate depois da saida de video
-		audiorate = gst.element_factory_make("audiorate","audiorate")
 		convert = gst.element_factory_make("audioconvert","convert")
+		audiorate = gst.element_factory_make("audiorate")
+		acaps = gst.Caps("audio/x-raw-int ,width=16,depth=16,rate=44100,channels=2,signed=true")
+		acapsfilter = gst.element_factory_make("capsfilter","afilter")
+		acapsfilter.set_property("caps", acaps)
 		mux = gst.element_factory_make("avimux", "mux")
+		squeue = gst.element_factory_make("queue","squeue")
 		tsink = gst.element_factory_make("xvimagesink","tsink")
-		#tsink.get_property("sync")
+		tsink.set_property("synchronous", False)
 		self.sink = gst.element_factory_make("filesink", "sink")
 		
 		
-		self.pipe.add(videosrc, videorate, capsfilter, tee, tsink, capsfilter2, colorspace, enc,vidqueue)
-		self.pipe.add( audiosrc, audiorate, convert, audqueue)
-		self.pipe.add(queue, mux, self.sink)
+		self.pipe.add(videosrc, videorate, capsfilter, tvid, acapsfilter, audiorate, tsink, colorspace, enc,vidqueue)
+		self.pipe.add(audiosrc, convert, audqueue)
+		self.pipe.add(squeue, mux, self.sink)
 		
-		gst.element_link_many(videosrc,videorate, capsfilter, tee, tsink)
-		gst.element_link_many(tee, vidqueue, colorspace, enc, mux)
-		gst.element_link_many(audiosrc, audiorate, convert,audqueue,mux,self.sink)
+		gst.element_link_many(videosrc, videorate, capsfilter, tvid, tsink)
+		gst.element_link_many( tvid, colorspace, enc, vidqueue, mux)
+		gst.element_link_many(audiosrc, convert, audiorate, acapsfilter, audqueue, mux)
+		gst.element_link_many(mux, self.sink)
 		
 		bus = self.pipe.get_bus()
 		bus.add_signal_watch()
@@ -137,5 +128,3 @@ class Grava():
 			imagesink.set_xwindow_id(self.movie_window.window.xid)
 			gtk.gdk.threads_leave()
 			
-if __name__ == "__main__":
-	wg = Grava()

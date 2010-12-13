@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
+#Author: Ana Queila, Jeferson e Uesle
 
-import sys, os, thread
+import sys, os
 
 ##### Importa a Biblioteca GTK+ #####
 import pygtk
@@ -9,11 +10,6 @@ pygtk.require("2.0")
 import gtk
 import gtk.glade
     
-### Importa a Biblioteca GObject ###
-
-#import gobject
-#gobject.threads_init()
-
 ### Importa a Biblioteca Gstreamer ###
 
 import pygst
@@ -57,13 +53,12 @@ class Webcam():
 		#Carregando o DrawingArea
 		self.movie_window = builder.get_object("movie_window")
 		#conectando os sinais
-		#builder.connect_signals(handle.__dict__)
 		builder.connect_signals(self)
 		#Exibe toda interface
 		self.janela.show_all()
 		
 		# Set up the gstreamer pipeline
-		self.player = gst.parse_launch ("v4l2src ! ffmpegcolorspace ! xvimagesink")	
+		self.player = gst.parse_launch ("v4l2src ! video/x-raw-yuv, framerate=(fraction)30/1 ! ffmpegcolorspace ! xvimagesink")	
 
 
 		bus = self.player.get_bus()
@@ -103,6 +98,3 @@ class Webcam():
 			gtk.gdk.threads_enter()
 			imagesink.set_xwindow_id(self.movie_window.window.xid)
 			gtk.gdk.threads_leave()
-			
-if __name__ == "__main__":
-	w = Webcam()

@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
+#Author: Ana Queila, Jeferson e Uesle
 
-import sys, os, thread
+import sys, os
 
 ##### Importa a Biblioteca GTK+ #####
 import pygtk
 pygtk.require("2.0")
 import gtk
 import gtk.glade
-    
-### Importa a Biblioteca GObject ###
-
-import gobject
-gobject.threads_init()
 
 ### Importa a Biblioteca Gstreamer ###
 
@@ -29,10 +25,7 @@ class Caudio(object):
 		if self.player.get_state()[1] == gst.STATE_NULL:
 			filepath = self.fcb.get_filename()
 			name = self.entry.get_text() + ".ogg"
-			print filepath
-			print name
 			if os.path.isdir(filepath):
-				print "sim"
 	 			self.sink.set_property("location", filepath + "/" + name)
 				self.player.set_state(gst.STATE_PLAYING)
 			
@@ -48,11 +41,8 @@ class Caudio(object):
 
 	def on_quit_clicked(self, widget, data=None):
 		self.janela.hide()
-		#gtk.main_quit()
+		gtk.main_quit()
 
-	#def on_janela_destroy(self, widget, data=None):
-		#self.janela.hide()
-		#gtk.main_quit()
 
 
 	arquivoglade = "CapturaA.glade"
@@ -80,7 +70,6 @@ class Caudio(object):
 		gst.element_link_many(source,convert,enc,mux,self.sink)
 
 		bus = self.player.get_bus()
-		print bus
 		bus.add_signal_watch()
 		bus.enable_sync_message_emission()
 		bus.connect("message", self.on_message)
