@@ -89,7 +89,7 @@
                       <object class="GtkLabel" id="label1">
                         <property name="width_request">155</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Tocador de M&#xFA;sica e Video</property>
+                        <property name="label" translatable="yes">Repodutor de &#xC1;udio e V&#xED;deo</property>
                       </object>
                       <packing>
                         <property name="position">1</property>
@@ -121,7 +121,9 @@
                       <object class="GtkLabel" id="label3">
                         <property name="width_request">155</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Visualiza e Grava a Webcam</property>
+                        <property name="label" translatable="yes">Visualizar e Gravar
+ da Webcam</property>
+                        <property name="justify">center</property>
                       </object>
                       <packing>
                         <property name="position">1</property>
@@ -183,7 +185,7 @@
                       <object class="GtkLabel" id="label5">
                         <property name="width_request">155</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Extrair Audio de Video</property>
+                        <property name="label" translatable="yes">Extrair Audio de V&#xED;deo</property>
                       </object>
                       <packing>
                         <property name="position">1</property>
@@ -232,7 +234,7 @@
                       <object class="GtkLabel" id="label2">
                         <property name="width_request">180</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Captura Desktop</property>
+                        <property name="label" translatable="yes">Capturar Desktop</property>
                       </object>
                       <packing>
                         <property name="position">1</property>
@@ -263,7 +265,7 @@
                       <object class="GtkLabel" id="label6">
                         <property name="width_request">180</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Captura Audio</property>
+                        <property name="label" translatable="yes">Capturar &#xC1;udio</property>
                       </object>
                       <packing>
                         <property name="position">1</property>
@@ -325,7 +327,7 @@
                       <object class="GtkLabel" id="label8">
                         <property name="width_request">180</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Converter Video em Fotos</property>
+                        <property name="label" translatable="yes">Converter Video em Imagens</property>
                       </object>
                       <packing>
                         <property name="position">1</property>

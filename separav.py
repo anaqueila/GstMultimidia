@@ -82,6 +82,7 @@ class Separav(object):
 		print t
 		if t == gst.MESSAGE_EOS:
 			self.player.set_state(gst.STATE_NULL)
+			print "finish"
 
 		elif t == gst.MESSAGE_ERROR:
 			err, debug = message.parse_error()
